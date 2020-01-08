@@ -46,7 +46,8 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
                 "top" : "50%",
                 "left" : "50%",
                 "transform": "translateX(-50%) translateY(-50%)",
-                "position": "absolute"
+				"position": "absolute",
+				"background": "black"
             });
 
             var $root = $(event.target.a).parent();
@@ -125,7 +126,8 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
                     "top": 0, // added by @insad
                     "left": 0,
                     "bottom": 0,
-                    "right": 0,
+					"right": 0,
+					"background":"black",
                     "pointer-events": "none" // avoid right mouse click popup menu
                 });
 
@@ -163,11 +165,11 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 				//add a play toggle button
 				if (params['play-button']) {
-					var $btn = $('<button class="play-toggle"><i class="fa fa-pause-circle"></i></button>');
+					var $btn = $('<button class="play-toggle"><span class="ytbg-btn-pause"></span></button>');
 
 					if (!params.autoplay) {
 						$btn.addClass('paused');
-						$this.find('i').removeClass('fa-pause-circle').addClass('fa-play-circle');
+						$this.find('span').removeClass('ytbg-btn-pause').addClass('ytbg-btn-play');
 					}
 
 					$btn.on('click', function() {
@@ -176,13 +178,13 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 						if ($this.hasClass('paused')) {
 							$this.removeClass('paused');
-							$this.find('i').addClass('fa-pause-circle').removeClass('fa-play-circle');
+							$this.find('span').addClass('ytbg-btn-pause').removeClass('ytbg-btn-play');
 							if (player) {
 								player.playVideo();
 							}
 						} else {
 							$this.addClass('paused');
-							$this.find('i').removeClass('fa-pause-circle').addClass('fa-play-circle');
+							$this.find('span').removeClass('ytbg-btn-pause').addClass('ytbg-btn-play');
 							if (player) {
 								player.pauseVideo();
 							}
